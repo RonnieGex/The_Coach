@@ -31,47 +31,97 @@ export default function QuienSoy() {
       {/* Sección Principal de Historia */}
       <section className="py-16 bg-brand-white-pure">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
-            {/* Introducción */}
-            <div className="mb-12">
+          <div className="max-w-6xl mx-auto">
+            {/* Professional Layout with Photo */}
+            <div className="grid lg:grid-cols-3 gap-12 mb-12">
+              {/* Professional Photo */}
+              <div className="lg:col-span-1">
+                <div className="sticky top-8">
+                  {/* Main Professional Photo */}
+                  <div className="relative w-full max-w-sm mx-auto">
+                    <div className="aspect-[3/4] relative rounded-2xl overflow-hidden shadow-2xl">
+                      <Image
+                        src="/images/jose-luis-about.jpg"
+                        alt="José Luis Arellano - Conferencista y Coach"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 384px"
+                      />
+                    </div>
+                    
+                    {/* Maxwell Certification */}
+                    <div className="absolute -bottom-4 -right-4 bg-white rounded-xl p-4 shadow-xl border">
+                      <Image
+                        src="/images/maxwell-certification.png"
+                        alt="John C. Maxwell Certification"
+                        width={64}
+                        height={64}
+                        className="rounded-lg"
+                      />
+                    </div>
+                  </div>
+                  
+                  {/* Corporate Credentials */}
+                  <div className="mt-8 space-y-4">
+                    <h4 className="text-sm font-bold text-brand-blue-deep text-center mb-4">Experiencia Corporativa</h4>
+                    <div className="flex justify-center gap-3 flex-wrap">
+                      <div className="w-16 h-8 bg-brand-blue-ultralight rounded flex items-center justify-center">
+                        <span className="text-xs text-brand-blue-deep font-semibold">P&G</span>
+                      </div>
+                      <div className="w-16 h-8 bg-brand-blue-ultralight rounded flex items-center justify-center">
+                        <span className="text-xs text-brand-blue-deep font-semibold">BIC</span>
+                      </div>
+                      <div className="w-20 h-8 bg-brand-blue-ultralight rounded flex items-center justify-center">
+                        <span className="text-xs text-brand-blue-deep font-semibold">Duracell</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Content */}
+              <div className="lg:col-span-2">
+                {/* Introducción */}
+                <div className="mb-12">
               <h2 className="text-3xl font-serif-display font-bold text-brand-blue-deep mb-6">
-                José Luis Arellano - "The Coach"
+                José Luis Arellano - Conferencista Certificado Maxwell
               </h2>
+              <div className="bg-brand-gold-warm/10 p-6 rounded-lg mb-6 border-l-4 border-brand-gold-warm">
+                <h3 className="text-xl font-bold text-brand-blue-deep mb-2">Certificación John C. Maxwell</h3>
+                <p className="text-brand-gray-pro">
+                  Conferencista oficial certificado por el equipo de John C. Maxwell, especializado en liderazgo transformacional y desarrollo de equipos de alto rendimiento.
+                </p>
+              </div>
               <p className="text-lg mb-4 text-brand-gray-pro">
-                Mi vida ha sido un viaje de constante transformación. Desde campeón nacional de natación, pasando por ejecutivo 
-                de multinacionales líderes, hasta encontrar mi verdadera vocación como coach de vida para mayores de 60 años.
+                Mi misión como conferencista es simple pero poderosa: demostrar que las crisis más profundas pueden convertirse en los trampolines más extraordinarios. A mis 65 años, no solo enseño esta filosofía, la vivo cada día.
               </p>
               <p className="text-lg mb-4 text-brand-gray-pro">
-                A mis 76 años, he aprendido que cada etapa de la vida trae sus propios desafíos y oportunidades. Mi misión es 
-                acompañar a otros en el descubrimiento de que después de los 60, ¡viene lo mejor de la vida!
+                Desde ejecutivo corporativo hasta conferencista internacional, mi transformación personal a los 50 se ha convertido en el testimonio viviente de que después de los 60, realmente viene lo mejor de la vida.
               </p>
             </div>
 
             {/* Trayectoria Profesional */}
             <div className="mb-12">
               <h3 className="text-2xl font-serif-display font-bold text-brand-blue-deep mb-4">
-                Mi Trayectoria Profesional
+                Mi Expertise en Transformación de Crisis
               </h3>
               <div className="space-y-6">
                 <div className="border-l-4 border-brand-gold-warm pl-6">
-                  <h4 className="text-xl font-bold text-brand-blue-deep">Procter & Gamble (1983-1993)</h4>
+                  <h4 className="text-xl font-bold text-brand-blue-deep">Líder Corporativo de Alto Rendimiento</h4>
                   <p className="text-brand-gray-pro">
-                    Una década transformadora donde aprendí los fundamentos del liderazgo corporativo y la gestión de equipos 
-                    de alto rendimiento en una de las empresas más exigentes del mundo.
+                    40+ años liderando equipos en multinacionales como Procter & Gamble (1983-1993), Bic y Duracell. Especialista en transformación organizacional y gestión de crisis empresariales.
                   </p>
                 </div>
                 <div className="border-l-4 border-brand-gold-warm pl-6">
-                  <h4 className="text-xl font-bold text-brand-blue-deep">Bic y Duracell</h4>
+                  <h4 className="text-xl font-bold text-brand-blue-deep">Atleta de Élite y Mentalidad Ganadora</h4>
                   <p className="text-brand-gray-pro">
-                    Roles directivos que me permitieron liderar transformaciones organizacionales y desarrollar una visión 
-                    estratégica global del negocio.
+                    Campeón nacional de natación. La disciplina del deporte de alto rendimiento forjó la mentalidad que hoy aplico para ayudar a otros a superar sus límites y redefinir lo posible.
                   </p>
                 </div>
                 <div className="border-l-4 border-brand-gold-warm pl-6">
-                  <h4 className="text-xl font-bold text-brand-blue-deep">Campeón Nacional de Natación</h4>
+                  <h4 className="text-xl font-bold text-brand-blue-deep">Especialista en Conferencias de Crisis</h4>
                   <p className="text-brand-gray-pro">
-                    El deporte me enseñó disciplina, perseverancia y la importancia de superar los propios límites. 
-                    Lecciones que aplico diariamente en mi vida y enseñanza.
+                    Conferencista especializado en manejo de crisis personal y profesional, ayudando a organizaciones y líderes a navegar momentos de incertidumbre y transformarlos en oportunidades de crecimiento.
                   </p>
                 </div>
               </div>
@@ -80,16 +130,16 @@ export default function QuienSoy() {
             {/* Mi Transformación Personal */}
             <div className="mb-12">
               <h3 className="text-2xl font-serif-display font-bold text-brand-blue-deep mb-4">
-                Mi Transformación Personal
+                La Crisis que Cambió Mi Destino
               </h3>
               <p className="text-lg mb-4 text-brand-gray-pro">
-                A los 50 años, experimenté mi propia crisis existencial. Después de décadas en el mundo corporativo, 
-                sentí que algo faltaba. Fue entonces cuando descubrí el coaching y encontré mi verdadera vocación: 
-                ayudar a otros a navegar sus propias transiciones de vida.
+                A los 50, enfrenté mi propia crisis existencial profunda. Después de décadas de éxito corporativo, algo fundamental faltaba. Esa crisis se convirtió en el momento más transformador de mi vida.
               </p>
               <p className="text-lg mb-4 text-brand-gray-pro">
-                Esta transformación personal me llevó a especializarme en el acompañamiento de personas mayores de 60 años, 
-                porque entiendo profundamente los desafíos y oportunidades que esta etapa presenta.
+                En lugar de resignarme al "final de la carrera", decidí reinventarme completamente. Esa experiencia personal de resurrección profesional es ahora el corazón de mis conferencias y programas de transformación.
+              </p>
+              <p className="text-lg mb-4 text-brand-gray-pro">
+                Mi historia no es única: es el testimonio viviente de que las crisis más profundas pueden ser los trampolines hacia una vida extraordinaria. Por eso me especializo en acompañar a líderes y profesionales en su propio proceso de resurrección después de los 60.
               </p>
             </div>
 
@@ -124,6 +174,8 @@ export default function QuienSoy() {
                   </p>
                 </div>
               </div>
+            </div>
+            </div>
             </div>
 
             {/* Llamada a la Acción */}

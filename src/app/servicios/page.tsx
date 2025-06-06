@@ -4,9 +4,9 @@ import { Users, User, Mic, Building } from 'lucide-react';
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Servicios de Coaching - Sesiones Individuales y Grupales",
-  description: "Servicios de coaching especializados: sesiones individuales, talleres grupales, conferencias y programas empresariales para mayores de 60 años. Precios desde $2,500 MXN.",
-  keywords: ["servicios coaching", "sesiones individuales", "talleres grupales", "conferencias", "coaching empresarial", "precios coaching"],
+  title: "Conferencias y Programas Maxwell - Transformación de Crisis en Oportunidades",
+  description: "Conferencista certificado John C. Maxwell. Especialización en conferencias de manejo de crisis, liderazgo transformacional y programas ejecutivos para líderes mayores de 60.",
+  keywords: ["conferencias Maxwell", "manejo de crisis", "liderazgo transformacional", "conferencista internacional", "coaching ejecutivo", "John C Maxwell"],
   openGraph: {
     title: "Servicios de Coaching - José Luis Arellano",
     description: "Servicios especializados en coaching para mayores de 60: sesiones individuales, talleres grupales y programas empresariales.",
@@ -75,10 +75,10 @@ export default function Servicios() {
       <section className="bg-gradient-wisdom-ascendant text-brand-white-pure py-16 md:py-24">
         <div className="container mx-auto px-6 text-center">
           <h1 className="text-4xl md:text-6xl font-serif-display font-bold mb-4">
-            Servicios de Coaching
+            Conferencias y Programas de Transformación
           </h1>
           <p className="text-xl max-w-2xl mx-auto">
-            Diseñados específicamente para profesionales y ejecutivos mayores de 60 años que buscan renovar su propósito
+            Programas certificados Maxwell y conferencias especializadas en transformación de crisis para líderes que buscan reinventarse
           </p>
         </div>
       </section>
@@ -88,12 +88,10 @@ export default function Servicios() {
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-3xl font-serif-display font-bold text-brand-blue-deep mb-6">
-              Tu Transformación Comienza Aquí
+              Metodología Maxwell Certificada
             </h2>
             <p className="text-lg text-brand-gray-pro">
-              Cada uno de mis servicios está diseñado para aprovechar tu experiencia de vida y transformarla en 
-              combustible para tu próximo capítulo. Ya sea que prefieras un acompañamiento individual o la energía 
-              de un grupo, tengo la opción perfecta para ti.
+              Como conferencista certificado John C. Maxwell, cada programa combina metodologías probadas internacionalmente con mi experiencia única transformando crisis corporativas en trampolines de crecimiento. Mi especialización: convertir los momentos más difíciles en las oportunidades más extraordinarias.
             </p>
           </div>
         </div>

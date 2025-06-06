@@ -62,8 +62,8 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-brand-gold-warm" />
-                <a href="mailto:info@joseluisarellano.com" className="hover:text-brand-gold-warm transition-colors">
-                  info@joseluisarellano.com
+                <a href="mailto:jlarellano@jlathecoach.com" className="hover:text-brand-gold-warm transition-colors">
+                  jlarellano@jlathecoach.com
                 </a>
               </div>
               <div className="flex items-center gap-2">
@@ -111,23 +111,23 @@ const Footer = () => {
             <h3 className="text-xl font-serif-display font-bold mb-4 text-brand-gold-warm">Servicios</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/servicios#sesiones-individuales" className="hover:text-brand-gold-warm transition-colors">
-                  Sesiones Individuales
+                <Link href="/servicios#coaching-ejecutivo" className="hover:text-brand-gold-warm transition-colors">
+                  Coaching Ejecutivo
                 </Link>
               </li>
               <li>
-                <Link href="/servicios#talleres-grupales" className="hover:text-brand-gold-warm transition-colors">
-                  Talleres Grupales
+                <Link href="/servicios#liderazgo-transformacional" className="hover:text-brand-gold-warm transition-colors">
+                  Liderazgo Transformacional
                 </Link>
               </li>
               <li>
-                <Link href="/servicios#conferencias" className="hover:text-brand-gold-warm transition-colors">
-                  Conferencias
+                <Link href="/servicios#conferencias-crisis" className="hover:text-brand-gold-warm transition-colors">
+                  Conferencias Crisis
                 </Link>
               </li>
               <li>
-                <Link href="/servicios#programas-empresariales" className="hover:text-brand-gold-warm transition-colors">
-                  Programas Empresariales
+                <Link href="/servicios#programas-corporativos" className="hover:text-brand-gold-warm transition-colors">
+                  Programas Corporativos
                 </Link>
               </li>
             </ul>

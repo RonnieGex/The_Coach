@@ -6,6 +6,7 @@ import GlassCard from "@/components/ui/GlassCard";
 import AnimatedText, { GlowingText } from "@/components/ui/AnimatedText";
 import FloatingElements, { GeometricShapes } from "@/components/ui/FloatingElements";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Target, Zap, Star, ArrowRight, Play } from "lucide-react";
 
@@ -22,7 +23,11 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-t from-primary-900/50 to-transparent" />
         
         <div className="relative z-10 container mx-auto px-6 pt-32 pb-20">
-          <div className="max-w-6xl mx-auto text-center">
+          <div className="max-w-6xl mx-auto">
+            {/* Hero Content with Photo */}
+            <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+              {/* Content Left */}
+              <div className="text-center lg:text-left">
             {/* Badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -32,7 +37,7 @@ export default function Home() {
             >
               <GlassCard className="px-6 py-3 inline-block" blur="sm" opacity="low">
                 <span className="text-secondary-400 font-semibold text-sm">
-                  ✨ Coaching especializado para mayores de 60 años
+                  ✨ Certificado John C. Maxwell • Conferencista Internacional
                 </span>
               </GlassCard>
             </motion.div>
@@ -55,10 +60,10 @@ export default function Home() {
               delay={0.8}
               className="text-xl md:text-2xl max-w-4xl mx-auto mb-8 text-brand-white-pure/90 leading-relaxed"
             >
-              Soy José Luis Arellano, "The Coach", y acompaño a mayores de 60 a aprovechar sus experiencias de vida para renovar sus expectativas, reconectar con su propósito y lograr sus sueños...
+              Conferencista certificado John C. Maxwell especializado en transformación de crisis en oportunidades. Ayudo a líderes y profesionales a reinventarse después de los 60, convirtiendo décadas de experiencia en su mayor ventaja competitiva.
             </AnimatedText>
 
-            {/* Frase destacada */}
+                {/* Frase destacada */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -70,9 +75,9 @@ export default function Home() {
                   "¡No viene el Ocaso, viene lo Mejor de la Vida!"
                 </span>
               </GlassCard>
-            </motion.div>
+                </motion.div>
 
-            {/* Botones de acción */}
+                {/* Botones de acción */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -99,26 +104,107 @@ export default function Home() {
                   Ver mi Historia
                 </ModernButton>
               </Link>
+                </motion.div>
+              </div>
+
+              {/* Professional Photo Right */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1, delay: 0.5 }}
+                className="flex justify-center lg:justify-end"
+              >
+                <div className="relative">
+                  {/* Main Photo Container */}
+                  <div className="relative w-80 h-96 rounded-2xl overflow-hidden shadow-2xl">
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary-900/20 to-transparent z-10" />
+                    <Image
+                      src="/images/jose-luis-hero.jpg"
+                      alt="José Luis Arellano - Conferencista Internacional"
+                      fill
+                      className="object-cover"
+                      priority
+                      sizes="(max-width: 768px) 100vw, 320px"
+                    />
+                  </div>
+                  
+                  {/* Maxwell Certification Badge */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 1.2 }}
+                    className="absolute -bottom-4 -right-4 bg-white rounded-xl p-4 shadow-xl border border-secondary-200"
+                  >
+                    <Image
+                      src="/images/maxwell-certification.png"
+                      alt="John C. Maxwell Certification"
+                      width={64}
+                      height={64}
+                      className="rounded-lg"
+                    />
+                  </motion.div>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Corporate Logos Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.5 }}
+              className="text-center mb-16"
+            >
+              <p className="text-brand-white-pure/70 text-sm mb-6 uppercase tracking-widest">
+                Experiencia Ejecutiva Comprobada
+              </p>
+              <div className="flex justify-center items-center gap-8 md:gap-12 flex-wrap">
+                <div className="relative w-24 h-12">
+                  <Image
+                    src="/images/logo-pg.png"
+                    alt="Procter & Gamble"
+                    fill
+                    className="object-contain filter brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
+                  />
+                </div>
+                <div className="relative w-24 h-12">
+                  <Image
+                    src="/images/logo-bic.png"
+                    alt="BIC"
+                    fill
+                    className="object-contain filter brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
+                  />
+                </div>
+                <div className="relative w-24 h-12">
+                  <Image
+                    src="/images/logo-duracell.png"
+                    alt="Duracell"
+                    fill
+                    className="object-contain filter brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
+                  />
+                </div>
+              </div>
             </motion.div>
 
             {/* Estadísticas */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.8 }}
-              className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-2xl mx-auto"
-            >
+            <div className="text-center">
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 1.8 }}
+                className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-2xl mx-auto"
+              >
               {[
-                { number: "15+", label: "Años de Experiencia" },
-                { number: "200+", label: "Vidas Transformadas" },
-                { number: "98%", label: "Satisfacción de Clientes" },
+                { number: "Maxwell", label: "Certificación Oficial" },
+                { number: "40+", label: "Años Liderando" },
+                { number: "Crisis", label: "en Oportunidades" },
               ].map((stat, index) => (
                 <GlassCard key={index} className="p-6 text-center" delay={index * 0.1}>
                   <div className="text-3xl font-bold text-secondary-400 mb-2">{stat.number}</div>
                   <div className="text-sm text-brand-white-pure/80">{stat.label}</div>
                 </GlassCard>
-              ))}
-            </motion.div>
+                ))}
+              </motion.div>
+            </div>
           </div>
         </div>
 
@@ -154,7 +240,7 @@ export default function Home() {
               delay={0.3}
               className="text-xl text-neutral-600 mb-8 leading-relaxed"
             >
-              Con una trayectoria que abarca desde el campeonato nacional de natación hasta roles directivos en Procter & Gamble, Bic y Duracell, he transformado décadas de experiencia y superación personal en un método único para guiar a profesionales y ejecutivos hacia nuevos comienzos plenos y significativos.
+              Desde liderar equipos en multinacionales como Procter & Gamble hasta superar mi propia crisis de propósito a los 50, he desarrollado un método único: transformar crisis profesionales y personales en trampolines hacia una vida extraordinaria después de los 60.
             </AnimatedText>
             
             <motion.div
@@ -242,6 +328,127 @@ export default function Home() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20 bg-gradient-to-br from-neutral-900 via-primary-900 to-secondary-900 text-brand-white-pure relative overflow-hidden">
+        <FloatingElements count={4} />
+        
+        <div className="relative z-10 container mx-auto px-6">
+          <AnimatedText 
+            variant="slide" 
+            className="text-4xl md:text-5xl font-serif-display font-bold text-center mb-4"
+          >
+            <GlowingText intensity="medium">
+              Transformaciones Reales
+            </GlowingText>
+          </AnimatedText>
+          
+          <AnimatedText 
+            variant="fade" 
+            delay={0.3}
+            className="text-xl text-center mb-16 max-w-3xl mx-auto text-brand-white-pure/90"
+          >
+            Líderes y ejecutivos que han transformado sus crisis en las oportunidades más extraordinarias de sus vidas
+          </AnimatedText>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {/* Testimonio 1 - CEO */}
+            <GlassCard className="p-8 text-center" delay={0.2} hover={true}>
+              {/* CEO Photo */}
+              <div className="relative w-20 h-20 rounded-full mx-auto mb-6 overflow-hidden">
+                <Image
+                  src="/images/testimonio-ceo.png"
+                  alt="Carlos Mendoza - CEO"
+                  fill
+                  className="object-cover"
+                  sizes="80px"
+                />
+              </div>
+              
+              <p className="text-brand-white-pure/90 italic mb-6 leading-relaxed">
+                "A mis 62 años, después de la crisis más grande de mi empresa, José Luis me ayudó a ver que no era el final, sino el comienzo de mi mejor capítulo como líder."
+              </p>
+              
+              <div className="border-t border-white/20 pt-4">
+                <h4 className="font-bold text-secondary-400">Carlos Mendoza</h4>
+                <p className="text-sm text-brand-white-pure/70">CEO, Grupo Industrial</p>
+                <p className="text-xs text-brand-white-pure/50">65 años</p>
+              </div>
+            </GlassCard>
+
+            {/* Testimonio 2 - Ejecutiva */}
+            <GlassCard className="p-8 text-center" delay={0.4} hover={true}>
+              {/* Executive Photo */}
+              <div className="relative w-20 h-20 rounded-full mx-auto mb-6 overflow-hidden">
+                <Image
+                  src="/images/testimonio-ejecutiva.png"
+                  alt="María González - Ejecutiva"
+                  fill
+                  className="object-cover"
+                  sizes="80px"
+                />
+              </div>
+              
+              <p className="text-brand-white-pure/90 italic mb-6 leading-relaxed">
+                "Su metodología Maxwell no solo me preparó para mi jubilación, me preparó para una nueva vida. Ahora soy mentora de jóvenes ejecutivas y nunca he sido más feliz."
+              </p>
+              
+              <div className="border-t border-white/20 pt-4">
+                <h4 className="font-bold text-secondary-400">María González</h4>
+                <p className="text-sm text-brand-white-pure/70">Ex-Directora, Multinacional</p>
+                <p className="text-xs text-brand-white-pure/50">61 años</p>
+              </div>
+            </GlassCard>
+
+            {/* Testimonio 3 - Empresario */}
+            <GlassCard className="p-8 text-center" delay={0.6} hover={true}>
+              {/* Entrepreneur Photo */}
+              <div className="relative w-20 h-20 rounded-full mx-auto mb-6 overflow-hidden">
+                <Image
+                  src="/images/testimonio-empresario.png"
+                  alt="Roberto Silva - Empresario"
+                  fill
+                  className="object-cover"
+                  sizes="80px"
+                />
+              </div>
+              
+              <p className="text-brand-white-pure/90 italic mb-6 leading-relaxed">
+                "Pensé que después de vender mi empresa todo había terminado. José Luis me mostró que era el momento perfecto para comenzar mi legado más importante."
+              </p>
+              
+              <div className="border-t border-white/20 pt-4">
+                <h4 className="font-bold text-secondary-400">Roberto Silva</h4>
+                <p className="text-sm text-brand-white-pure/70">Empresario Serial</p>
+                <p className="text-xs text-brand-white-pure/50">68 años</p>
+              </div>
+            </GlassCard>
+          </div>
+
+          {/* Results Stats */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.2 }}
+            className="mt-16 text-center"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
+              <div>
+                <div className="text-4xl font-bold text-secondary-400 mb-2">95%</div>
+                <div className="text-sm text-brand-white-pure/80">Reportan Mayor Propósito</div>
+              </div>
+              <div>
+                <div className="text-4xl font-bold text-secondary-400 mb-2">87%</div>
+                <div className="text-sm text-brand-white-pure/80">Inician Nuevos Proyectos</div>
+              </div>
+              <div>
+                <div className="text-4xl font-bold text-secondary-400 mb-2">92%</div>
+                <div className="text-sm text-brand-white-pure/80">Recomiendan el Proceso</div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 

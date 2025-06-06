@@ -170,7 +170,7 @@ export default function MiFilosofia() {
               Mi Promesa Personal
             </h3>
             <p className="text-lg text-brand-gray-pro italic text-center mb-4">
-              "A mis 76 años, vivo cada día con más energía y propósito que cuando tenía 40. 
+              "A mis 65 años, vivo cada día con más energía y propósito que cuando tenía 40. 
               No porque ignore mi edad, sino porque he aprendido a honrarla y aprovecharla."
             </p>
             <p className="text-brand-gray-pro text-center">

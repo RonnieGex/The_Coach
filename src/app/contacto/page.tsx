@@ -46,8 +46,8 @@ export default function Contacto() {
                   <Mail className="w-6 h-6 text-brand-gold-warm mt-1" />
                   <div>
                     <h3 className="font-bold text-brand-blue-deep">Email</h3>
-                    <a href="mailto:info@joseluisarellano.com" className="text-brand-gray-pro hover:text-brand-gold-warm">
-                      info@joseluisarellano.com
+                    <a href="mailto:jlarellano@jlathecoach.com" className="text-brand-gray-pro hover:text-brand-gold-warm">
+                      jlarellano@jlathecoach.com
                     </a>
                   </div>
                 </div>
