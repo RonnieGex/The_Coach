@@ -1,153 +1,220 @@
 'use client';
 
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { Button } from "@/components/ui/Button";
+import toast from 'react-hot-toast';
+import ModernButton from "@/components/ui/ModernButton";
+import GlassCard from "@/components/ui/GlassCard";
 import { supabase } from '@/lib/supabaseClient';
+import { Send, CheckCircle, AlertCircle } from 'lucide-react';
+
+// Esquema de validación con Zod
+const contactSchema = z.object({
+  nombre: z.string().min(2, 'El nombre debe tener al menos 2 caracteres'),
+  email: z.string().email('Por favor ingresa un email válido'),
+  telefono: z.string().optional(),
+  edad: z.string().optional(),
+  servicio: z.string().optional(),
+  mensaje: z.string().min(10, 'El mensaje debe tener al menos 10 caracteres'),
+});
+
+type ContactFormData = z.infer<typeof contactSchema>;
 
 export default function ContactForm() {
-  const [formData, setFormData] = useState({
-    nombre: '',
-    email: '',
-    telefono: '',
-    edad: '',
-    servicio: '',
-    mensaje: ''
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid, isDirty },
+    reset,
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema),
+    mode: 'onBlur',
   });
 
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState(false);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
+  const onSubmit = async (data: ContactFormData) => {
+    setIsSubmitting(true);
+    
+    // Toast de loading
+    const toastId = toast.loading('Enviando mensaje...', {
+      style: {
+        background: 'rgba(212, 175, 55, 0.95)',
+        color: '#1A365D',
+      },
     });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setError('');
-    setSuccess(false);
 
     try {
       const { error } = await supabase
         .from('contact_messages')
         .insert([
           {
-            nombre: formData.nombre,
-            email: formData.email,
-            telefono: formData.telefono || null,
-            edad: formData.edad || null,
-            servicio: formData.servicio || null,
-            mensaje: formData.mensaje
+            nombre: data.nombre,
+            email: data.email,
+            telefono: data.telefono || null,
+            edad: data.edad || null,
+            servicio: data.servicio || null,
+            mensaje: data.mensaje,
           }
         ]);
 
       if (error) throw error;
 
-      setSuccess(true);
-      setFormData({
-        nombre: '',
-        email: '',
-        telefono: '',
-        edad: '',
-        servicio: '',
-        mensaje: ''
+      // Success toast
+      toast.success('¡Mensaje enviado exitosamente! Te contactaré pronto.', {
+        id: toastId,
+        duration: 5000,
+        icon: '🎉',
       });
 
-      // Ocultar mensaje de éxito después de 5 segundos
-      setTimeout(() => {
-        setSuccess(false);
-      }, 5000);
-
+      reset();
     } catch (error) {
-      setError('Hubo un error al enviar tu mensaje. Por favor, intenta de nuevo.');
+      // Error toast
+      toast.error('Hubo un error al enviar tu mensaje. Por favor, intenta de nuevo.', {
+        id: toastId,
+        duration: 5000,
+      });
       console.error('Error:', error);
     } finally {
-      setLoading(false);
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="bg-brand-white-pure shadow-lg rounded-lg p-8">
-      <h2 className="text-2xl font-serif-display font-bold text-brand-blue-deep mb-6">
-        Envíame un Mensaje
-      </h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label htmlFor="nombre" className="block text-sm font-bold text-brand-gray-pro mb-2">
+    <GlassCard className="p-8" blur="lg" opacity="high">
+      <div className="mb-6">
+        <h2 className="text-3xl font-serif-display font-bold text-primary-900 mb-2">
+          Envíame un Mensaje
+        </h2>
+        <p className="text-neutral-600">
+          Completa el formulario y te responderé en las próximas 24 horas
+        </p>
+      </div>
+
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+        {/* Nombre */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+        >
+          <label className="block text-sm font-semibold text-neutral-700 mb-2">
             Nombre Completo *
           </label>
           <input
+            {...register('nombre')}
             type="text"
-            id="nombre"
-            name="nombre"
-            value={formData.nombre}
-            onChange={handleChange}
-            required
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-brand-gold-warm focus:border-transparent"
+            className={`
+              w-full px-4 py-3 rounded-xl border-2 transition-all duration-300
+              bg-white/50 backdrop-blur-sm
+              focus:outline-none focus:ring-2 focus:ring-secondary-500/50
+              ${errors.nombre 
+                ? 'border-red-400 focus:border-red-500' 
+                : 'border-neutral-200 focus:border-secondary-500'
+              }
+            `}
+            placeholder="Ej: Juan Pérez"
           />
-        </div>
+          {errors.nombre && (
+            <motion.p
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mt-2 text-sm text-red-600 flex items-center gap-1"
+            >
+              <AlertCircle className="w-4 h-4" />
+              {errors.nombre.message}
+            </motion.p>
+          )}
+        </motion.div>
 
-        <div>
-          <label htmlFor="email" className="block text-sm font-bold text-brand-gray-pro mb-2">
+        {/* Email */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+        >
+          <label className="block text-sm font-semibold text-neutral-700 mb-2">
             Email *
           </label>
           <input
+            {...register('email')}
             type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-brand-gold-warm focus:border-transparent"
+            className={`
+              w-full px-4 py-3 rounded-xl border-2 transition-all duration-300
+              bg-white/50 backdrop-blur-sm
+              focus:outline-none focus:ring-2 focus:ring-secondary-500/50
+              ${errors.email 
+                ? 'border-red-400 focus:border-red-500' 
+                : 'border-neutral-200 focus:border-secondary-500'
+              }
+            `}
+            placeholder="juan@ejemplo.com"
           />
-        </div>
+          {errors.email && (
+            <motion.p
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mt-2 text-sm text-red-600 flex items-center gap-1"
+            >
+              <AlertCircle className="w-4 h-4" />
+              {errors.email.message}
+            </motion.p>
+          )}
+        </motion.div>
 
-        <div>
-          <label htmlFor="telefono" className="block text-sm font-bold text-brand-gray-pro mb-2">
-            Teléfono
-          </label>
-          <input
-            type="tel"
-            id="telefono"
-            name="telefono"
-            value={formData.telefono}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-brand-gold-warm focus:border-transparent"
-          />
-        </div>
-
-        <div>
-          <label htmlFor="edad" className="block text-sm font-bold text-brand-gray-pro mb-2">
-            Rango de Edad
-          </label>
-          <select
-            id="edad"
-            name="edad"
-            value={formData.edad}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-brand-gold-warm focus:border-transparent"
+        {/* Teléfono y Edad en grid */}
+        <div className="grid md:grid-cols-2 gap-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
           >
-            <option value="">Selecciona una opción</option>
-            <option value="50-60">50-60 años</option>
-            <option value="60-70">60-70 años</option>
-            <option value="70+">70+ años</option>
-          </select>
+            <label className="block text-sm font-semibold text-neutral-700 mb-2">
+              Teléfono
+            </label>
+            <input
+              {...register('telefono')}
+              type="tel"
+              className="w-full px-4 py-3 rounded-xl border-2 border-neutral-200 transition-all duration-300 bg-white/50 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-secondary-500/50 focus:border-secondary-500"
+              placeholder="+52 55 1234 5678"
+            />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+          >
+            <label className="block text-sm font-semibold text-neutral-700 mb-2">
+              Rango de Edad
+            </label>
+            <select
+              {...register('edad')}
+              className="w-full px-4 py-3 rounded-xl border-2 border-neutral-200 transition-all duration-300 bg-white/50 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-secondary-500/50 focus:border-secondary-500"
+            >
+              <option value="">Selecciona una opción</option>
+              <option value="50-60">50-60 años</option>
+              <option value="60-70">60-70 años</option>
+              <option value="70+">70+ años</option>
+            </select>
+          </motion.div>
         </div>
 
-        <div>
-          <label htmlFor="servicio" className="block text-sm font-bold text-brand-gray-pro mb-2">
+        {/* Servicio */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+        >
+          <label className="block text-sm font-semibold text-neutral-700 mb-2">
             Servicio de Interés
           </label>
           <select
-            id="servicio"
-            name="servicio"
-            value={formData.servicio}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-brand-gold-warm focus:border-transparent"
+            {...register('servicio')}
+            className="w-full px-4 py-3 rounded-xl border-2 border-neutral-200 transition-all duration-300 bg-white/50 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-secondary-500/50 focus:border-secondary-500"
           >
             <option value="">Selecciona un servicio</option>
             <option value="sesion-individual">Sesiones Individuales</option>
@@ -156,51 +223,75 @@ export default function ContactForm() {
             <option value="programa-empresarial">Programas Empresariales</option>
             <option value="sesion-gratuita">Sesión de Descubrimiento Gratuita</option>
           </select>
-        </div>
+        </motion.div>
 
-        <div>
-          <label htmlFor="mensaje" className="block text-sm font-bold text-brand-gray-pro mb-2">
+        {/* Mensaje */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6 }}
+        >
+          <label className="block text-sm font-semibold text-neutral-700 mb-2">
             Mensaje *
           </label>
           <textarea
-            id="mensaje"
-            name="mensaje"
-            value={formData.mensaje}
-            onChange={handleChange}
-            required
-            rows={4}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-brand-gold-warm focus:border-transparent"
+            {...register('mensaje')}
+            rows={5}
+            className={`
+              w-full px-4 py-3 rounded-xl border-2 transition-all duration-300
+              bg-white/50 backdrop-blur-sm resize-none
+              focus:outline-none focus:ring-2 focus:ring-secondary-500/50
+              ${errors.mensaje 
+                ? 'border-red-400 focus:border-red-500' 
+                : 'border-neutral-200 focus:border-secondary-500'
+              }
+            `}
             placeholder="Cuéntame un poco sobre ti y qué te gustaría lograr..."
           />
-        </div>
+          {errors.mensaje && (
+            <motion.p
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mt-2 text-sm text-red-600 flex items-center gap-1"
+            >
+              <AlertCircle className="w-4 h-4" />
+              {errors.mensaje.message}
+            </motion.p>
+          )}
+        </motion.div>
 
-        <div>
-          <Button 
-            type="submit" 
-            variant="primary" 
+        {/* Submit Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7 }}
+          className="pt-4"
+        >
+          <ModernButton
+            type="submit"
+            variant="primary"
+            size="lg"
+            loading={isSubmitting}
+            disabled={!isValid || !isDirty}
+            icon={isSubmitting ? undefined : <Send className="w-5 h-5" />}
             className="w-full"
-            disabled={loading}
+            glow={isValid && isDirty}
           >
-            {loading ? 'Enviando...' : 'Enviar Mensaje'}
-          </Button>
-        </div>
+            {isSubmitting ? 'Enviando Mensaje...' : 'Enviar Mensaje'}
+          </ModernButton>
+        </motion.div>
 
-        {error && (
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
-            {error}
-          </div>
-        )}
-
-        {success && (
-          <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
-            ¡Gracias por tu mensaje! Te contactaré pronto.
-          </div>
-        )}
-
-        <p className="text-xs text-brand-gray-pro text-center">
-          * Campos obligatorios. Tu información será tratada con absoluta confidencialidad.
-        </p>
+        {/* Privacy notice */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.8 }}
+          className="text-xs text-neutral-500 text-center flex items-center justify-center gap-2"
+        >
+          <CheckCircle className="w-4 h-4 text-accent-500" />
+          Tu información será tratada con absoluta confidencialidad
+        </motion.p>
       </form>
-    </div>
+    </GlassCard>
   );
 }

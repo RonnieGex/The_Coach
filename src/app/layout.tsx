@@ -1,10 +1,10 @@
-// src/app/layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./(components-globales-app)/Header";
 import Footer from "./(components-globales-app)/Footer";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import ToastProvider from "@/components/providers/ToastProvider";
 
 // Nota: Puedes afinar las fuentes aquí si es necesario
 const inter = Inter({ subsets: ["latin"] });
@@ -67,6 +67,7 @@ export default function RootLayout({
     <html lang="es">
       <body className={inter.className}>
         {GA_MEASUREMENT_ID && <GoogleAnalytics GA_MEASUREMENT_ID={GA_MEASUREMENT_ID} />}
+        <ToastProvider />
         <Header />
         <main>{children}</main>
         <Footer />

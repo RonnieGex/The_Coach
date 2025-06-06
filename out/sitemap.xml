@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>https://joseluisarellano.com</loc>
+<lastmod>2025-06-06T17:58:27.445Z</lastmod>
+<changefreq>weekly</changefreq>
+<priority>1</priority>
+</url>
+<url>
+<loc>https://joseluisarellano.com/quien-soy</loc>
+<lastmod>2025-06-06T17:58:27.445Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://joseluisarellano.com/servicios</loc>
+<lastmod>2025-06-06T17:58:27.445Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.9</priority>
+</url>
+<url>
+<loc>https://joseluisarellano.com/mi-filosofia</loc>
+<lastmod>2025-06-06T17:58:27.445Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://joseluisarellano.com/contacto</loc>
+<lastmod>2025-06-06T17:58:27.445Z</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+</urlset>
