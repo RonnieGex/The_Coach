@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/Button";
 import { PremiumBackgrounds, PremiumOverlays } from "@/components/ui/PremiumBackgrounds";
 import Link from "next/link";
+import Image from "next/image";
 import { Users, User, Mic, Building } from 'lucide-react';
 import type { Metadata } from "next";
 
