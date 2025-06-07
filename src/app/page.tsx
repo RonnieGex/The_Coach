@@ -5,6 +5,7 @@ import ModernButton from "@/components/ui/ModernButton";
 import GlassCard from "@/components/ui/GlassCard";
 import AnimatedText, { GlowingText } from "@/components/ui/AnimatedText";
 import FloatingElements, { GeometricShapes } from "@/components/ui/FloatingElements";
+import { PremiumBackgrounds, PremiumOverlays } from "@/components/ui/PremiumBackgrounds";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -14,7 +15,9 @@ export default function Home() {
   return (
     <>
       {/* Hero Section Modernizado */}
-      <section className="relative min-h-screen bg-gradient-to-br from-primary-900 via-primary-800 to-secondary-600 text-brand-white-pure overflow-hidden">
+      <section className={`relative min-h-screen ${PremiumBackgrounds.executiveMidnight} text-brand-white-pure overflow-hidden`}>
+        {/* Professional Overlay */}
+        <div className={`absolute inset-0 ${PremiumOverlays.darkProfessional}`} />
         {/* Elementos flotantes de fondo */}
         <FloatingElements count={8} />
         <GeometricShapes />
@@ -225,7 +228,7 @@ export default function Home() {
       </section>
 
       {/* Sección de Introducción Modernizada */}
-      <section className="py-20 bg-gradient-to-b from-neutral-50 to-neutral-100 relative overflow-hidden">
+      <section className={`py-20 ${PremiumBackgrounds.maxwellGold} relative overflow-hidden`}>
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
             <AnimatedText 
@@ -263,7 +266,7 @@ export default function Home() {
       </section>
 
       {/* Sección de Beneficios Modernizada */}
-      <section className="py-20 bg-gradient-to-br from-primary-50 to-secondary-50 relative overflow-hidden">
+      <section className={`py-20 ${PremiumBackgrounds.successEmerald} relative overflow-hidden`}>
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <AnimatedText 
@@ -332,7 +335,8 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-gradient-to-br from-neutral-900 via-primary-900 to-secondary-900 text-brand-white-pure relative overflow-hidden">
+      <section className={`py-20 ${PremiumBackgrounds.wisdomSapphire} text-brand-white-pure relative overflow-hidden`}>
+        <div className={`absolute inset-0 ${PremiumOverlays.darkProfessional}`} />
         <FloatingElements count={4} />
         
         <div className="relative z-10 container mx-auto px-6">
@@ -453,7 +457,8 @@ export default function Home() {
       </section>
 
       {/* Call to Action Final Modernizado */}
-      <section className="py-20 bg-gradient-to-r from-accent-600 via-primary-800 to-secondary-600 text-brand-white-pure relative overflow-hidden">
+      <section className={`py-20 ${PremiumBackgrounds.royalAuthority} text-brand-white-pure relative overflow-hidden`}>
+        <div className={`absolute inset-0 ${PremiumOverlays.darkProfessional}`} />
         <FloatingElements count={6} />
         
         <div className="relative z-10 container mx-auto px-6 text-center">

@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
+import Image from "next/image";
 import { Users, User, Mic, Building } from 'lucide-react';
 import type { Metadata } from "next";
 
@@ -72,8 +73,19 @@ export default function Servicios() {
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-gradient-wisdom-ascendant text-brand-white-pure py-16 md:py-24">
-        <div className="container mx-auto px-6 text-center">
+      <section className="text-brand-white-pure py-16 md:py-24 relative overflow-hidden">
+        {/* Sunrise Transformation Background */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/backgrounds/sunrise-transformation.jpg"
+            alt="Transformation Background"
+            fill
+            className="object-cover"
+            quality={90}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-orange-900/30 to-black/60" />
+        </div>
+        <div className="relative z-10 container mx-auto px-6 text-center">
           <h1 className="text-4xl md:text-6xl font-serif-display font-bold mb-4">
             Conferencias y Programas de Transformación
           </h1>

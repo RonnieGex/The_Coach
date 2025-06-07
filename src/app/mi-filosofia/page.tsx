@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
+import Image from "next/image";
 import { Heart, Brain, Target, Sparkles } from 'lucide-react';
 import type { Metadata } from "next";
 
@@ -59,8 +60,19 @@ export default function MiFilosofia() {
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-gradient-golden-vitality text-brand-white-pure py-16 md:py-24">
-        <div className="container mx-auto px-6 text-center">
+      <section className="text-brand-white-pure py-16 md:py-24 relative overflow-hidden">
+        {/* Platinum Elite Background */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/backgrounds/platinum-elite.jpg"
+            alt="Platinum Elite Background"
+            fill
+            className="object-cover"
+            quality={90}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-slate-800/40 to-black/60" />
+        </div>
+        <div className="relative z-10 container mx-auto px-6 text-center">
           <h1 className="text-4xl md:text-6xl font-serif-display font-bold mb-4">
             Mi Filosofía de Coaching
           </h1>

@@ -17,8 +17,19 @@ export default function QuienSoy() {
   return (
     <>
       {/* Hero Section con Título */}
-      <section className="bg-gradient-natural-renewal text-brand-white-pure py-16 md:py-24">
-        <div className="container mx-auto px-6 text-center">
+      <section className="text-brand-white-pure py-16 md:py-24 relative overflow-hidden">
+        {/* Ocean Depth Background */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/backgrounds/ocean-depth.jpg"
+            alt="Ocean Depth Background"
+            fill
+            className="object-cover"
+            quality={90}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
+        </div>
+        <div className="relative z-10 container mx-auto px-6 text-center">
           <h1 className="text-4xl md:text-6xl font-serif-display font-bold mb-4">
             Conoce mi Historia
           </h1>

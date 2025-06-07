@@ -3,7 +3,10 @@ const nextConfig = {
   output: 'export',  
   trailingSlash: true,  
   images: { 
-    unoptimized: true
+    unoptimized: true,
+    formats: ['image/avif', 'image/webp'],
+    minimumCacheTTL: 60,
+    dangerouslyAllowSVG: true
   },
   
   // Optimizaciones básicas
