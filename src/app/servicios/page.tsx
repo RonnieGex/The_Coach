@@ -142,7 +142,7 @@ export default function Servicios() {
                     {servicio.precio}
                   </p>
                   <Link href="/contacto">
-                    <Button variant="secondary">Más Información</Button>
+                    <Button variant="ghost">Más Información</Button>
                   </Link>
                 </div>
               </div>

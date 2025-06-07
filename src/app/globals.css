@@ -6,7 +6,7 @@
 @tailwind utilities;
 
 body {
-  @apply font-sans-body text-brand-gray-pro;
+  @apply font-sans-body bg-brand-blue-deep text-brand-white-pure;
 }
 
 h1, h2, h3, h4, h5, h6 {

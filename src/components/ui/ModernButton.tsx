@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { motion } from 'framer-motion';
 import { ReactNode } from 'react';
@@ -17,36 +17,10 @@ interface ModernButtonProps {
 }
 
 const variants = {
-  primary: `
-    bg-gradient-to-r from-secondary-500 to-secondary-600
-    text-primary-900 
-    shadow-lg shadow-secondary-500/25
-    hover:shadow-xl hover:shadow-secondary-500/40
-    border border-secondary-400/20
-  `,
-  secondary: `
-    bg-gradient-to-r from-primary-900 to-primary-800
-    text-brand-white-pure
-    shadow-lg shadow-primary-900/25
-    hover:shadow-xl hover:shadow-primary-900/40
-    border border-primary-700/20
-  `,
-  ghost: `
-    bg-transparent
-    text-primary-900
-    border border-primary-200
-    hover:bg-primary-50
-    hover:border-primary-300
-  `,
-  glass: `
-    bg-glass-white-md
-    backdrop-blur-md
-    text-primary-900
-    border border-white/20
-    shadow-glass
-    hover:bg-glass-white-lg
-    hover:shadow-glow-sm
-  `,
+  primary: 'bg-gradient-to-r from-secondary-500 to-secondary-600 text-white shadow-lg shadow-secondary-500/20 hover:shadow-xl hover:shadow-secondary-500/30 border border-secondary-400/20 hover:from-secondary-400 hover:to-secondary-500',
+  secondary: 'bg-gradient-to-r from-primary-900 to-primary-800 text-brand-white-pure shadow-lg shadow-primary-900/20 hover:shadow-xl hover:shadow-primary-900/30 border border-primary-700/20 hover:from-primary-800 hover:to-primary-700',
+  ghost: 'bg-transparent text-primary-900 border border-primary-200 hover:bg-primary-50 hover:border-primary-300',
+  glass: 'bg-white/10 backdrop-blur-md text-white border border-white/20 shadow-lg hover:bg-white/20',
 };
 
 const sizes = {
@@ -77,49 +51,11 @@ export default function ModernButton({
         scale: 0.98,
         transition: { duration: 0.1 }
       }}
-      className={`
-        ${variants[variant]}
-        ${sizes[size]}
-        font-semibold
-        rounded-xl
-        transition-all
-        duration-300
-        flex
-        items-center
-        justify-center
-        gap-2
-        disabled:opacity-50
-        disabled:cursor-not-allowed
-        relative
-        overflow-hidden
-        ${glow ? 'animate-glow' : ''}
-        ${className}
-      `}
+      className={`${variants[variant]} ${sizes[size]} font-semibold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed ${className}`}
       disabled={disabled || loading}
       type={type}
       onClick={onClick}
     >
-      {/* Efecto shimmer */}
-      {!disabled && !loading && (
-        <motion.div
-          className="absolute inset-0 -top-[2px] bg-gradient-to-r from-transparent via-white/20 to-transparent"
-          initial={{ x: '-100%' }}
-          animate={{ x: '100%' }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            repeatDelay: 3,
-            ease: 'linear'
-          }}
-          style={{
-            background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)',
-            transform: 'skewX(-45deg)',
-            width: '100%',
-            height: '100%',
-          }}
-        />
-      )}
-      
       {loading ? (
         <motion.div
           animate={{ rotate: 360 }}
@@ -128,20 +64,7 @@ export default function ModernButton({
         />
       ) : (
         <>
-          {icon && (
-            <motion.span
-              animate={{ 
-                rotate: [0, 5, -5, 0],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                repeatDelay: 4,
-              }}
-            >
-              {icon}
-            </motion.span>
-          )}
+          {icon && icon}
           {children}
         </>
       )}
