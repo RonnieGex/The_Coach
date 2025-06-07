@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/Button";
+import { PremiumBackgrounds, PremiumOverlays } from "@/components/ui/PremiumBackgrounds";
 import Link from "next/link";
-import Image from "next/image";
 import { Users, User, Mic, Building } from 'lucide-react';
 import type { Metadata } from "next";
 
@@ -81,7 +81,7 @@ export default function Servicios() {
             alt="Transformation Background"
             fill
             className="object-cover"
-            quality={90}
+            quality={85}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-orange-900/30 to-black/60" />
         </div>

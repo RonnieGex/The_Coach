@@ -15,9 +15,20 @@ export default function Home() {
   return (
     <>
       {/* Hero Section Modernizado */}
-      <section className={`relative min-h-screen ${PremiumBackgrounds.executiveMidnight} text-brand-white-pure overflow-hidden`}>
-        {/* Professional Overlay */}
-        <div className={`absolute inset-0 ${PremiumOverlays.darkProfessional}`} />
+      <section className="relative min-h-screen text-brand-white-pure overflow-hidden">
+        {/* Executive Midnight Background */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/backgrounds/executive-midnight.jpg"
+            alt="Executive Background"
+            fill
+            className="object-cover"
+            priority
+            quality={90}
+            unoptimized
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-black/20" />
+        </div>
         {/* Elementos flotantes de fondo */}
         <FloatingElements count={8} />
         <GeometricShapes />
@@ -228,7 +239,18 @@ export default function Home() {
       </section>
 
       {/* Sección de Introducción Modernizada */}
-      <section className={`py-20 ${PremiumBackgrounds.maxwellGold} relative overflow-hidden`}>
+      <section className="py-20 relative overflow-hidden">
+        {/* Maxwell Gold Prestige Background */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/backgrounds/maxwell-gold-prestige.jpg"
+            alt="Maxwell Prestige Background"
+            fill
+            className="object-cover"
+            quality={85}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/90 to-white/95" />
+        </div>
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
             <AnimatedText 
@@ -266,7 +288,18 @@ export default function Home() {
       </section>
 
       {/* Sección de Beneficios Modernizada */}
-      <section className={`py-20 ${PremiumBackgrounds.successEmerald} relative overflow-hidden`}>
+      <section className="py-20 relative overflow-hidden">
+        {/* Success Emerald Background */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/backgrounds/success-emerald.jpg"
+            alt="Success Background"
+            fill
+            className="object-cover"
+            quality={85}
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-white/92 via-emerald-50/80 to-white/90" />
+        </div>
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <AnimatedText 
@@ -335,8 +368,18 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className={`py-20 ${PremiumBackgrounds.wisdomSapphire} text-brand-white-pure relative overflow-hidden`}>
-        <div className={`absolute inset-0 ${PremiumOverlays.darkProfessional}`} />
+      <section className="py-20 text-brand-white-pure relative overflow-hidden">
+        {/* Wisdom Sapphire Background */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/backgrounds/wisdom-sapphire.jpg"
+            alt="Wisdom Background"
+            fill
+            className="object-cover"
+            quality={85}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
+        </div>
         <FloatingElements count={4} />
         
         <div className="relative z-10 container mx-auto px-6">
@@ -457,8 +500,18 @@ export default function Home() {
       </section>
 
       {/* Call to Action Final Modernizado */}
-      <section className={`py-20 ${PremiumBackgrounds.royalAuthority} text-brand-white-pure relative overflow-hidden`}>
-        <div className={`absolute inset-0 ${PremiumOverlays.darkProfessional}`} />
+      <section className="py-20 text-brand-white-pure relative overflow-hidden">
+        {/* Royal Authority Background */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/backgrounds/royal-authority.jpg"
+            alt="Authority Background"
+            fill
+            className="object-cover"
+            quality={85}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70" />
+        </div>
         <FloatingElements count={6} />
         
         <div className="relative z-10 container mx-auto px-6 text-center">

@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/Button";
+import { PremiumBackgrounds, PremiumOverlays } from "@/components/ui/PremiumBackgrounds";
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
@@ -25,7 +26,7 @@ export default function QuienSoy() {
             alt="Ocean Depth Background"
             fill
             className="object-cover"
-            quality={90}
+            quality={85}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
         </div>

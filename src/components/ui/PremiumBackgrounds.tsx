@@ -1,20 +1,36 @@
 'use client';
 
-// Premium CSS gradients para performance óptima
+// Gradientes premium basados en los backgrounds generados
 export const PremiumBackgrounds = {
-  executiveMidnight: 'bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900',
-  maxwellGold: 'bg-gradient-to-br from-amber-50 via-orange-100 to-yellow-50',
-  wisdomSapphire: 'bg-gradient-to-br from-blue-900 via-indigo-800 to-slate-900',
-  royalAuthority: 'bg-gradient-to-r from-purple-900 via-indigo-800 to-blue-900',
-  successEmerald: 'bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50',
-  sunriseTransformation: 'bg-gradient-to-br from-orange-600 via-amber-500 to-yellow-400',
-  oceanDepth: 'bg-gradient-to-b from-blue-800 via-cyan-700 to-teal-800',
-  platinumElite: 'bg-gradient-to-br from-slate-700 via-gray-600 to-zinc-700'
+  // Executive Midnight - Azul corporativo profundo
+  executiveMidnight: 'bg-gradient-to-br from-[#0F172A] via-[#1E293B] to-[#334155]',
+  
+  // Maxwell Gold Prestige - Dorado prestigioso para certificación
+  maxwellGold: 'bg-gradient-to-br from-[#0F172A] via-[#1E293B] to-[#F59E0B]',
+  
+  // Wisdom Sapphire - Azul sabiduría para testimoniales
+  wisdomSapphire: 'bg-gradient-to-br from-[#1E3A8A] via-[#1E293B] to-[#0F172A]',
+  
+  // Royal Authority - Autoridad real para CTAs
+  royalAuthority: 'bg-gradient-to-br from-[#1E1B4B] via-[#312E81] to-[#4338CA]',
+  
+  // Success Emerald - Verde éxito para beneficios
+  successEmerald: 'bg-gradient-to-br from-[#064E3B] via-[#065F46] to-[#0F766E]',
+  
+  // Sunrise Transformation - Amanecer transformacional
+  sunriseTransformation: 'bg-gradient-to-br from-[#7C2D12] via-[#C2410C] to-[#FB923C]',
+  
+  // Ocean Depth - Profundidad oceánica
+  oceanDepth: 'bg-gradient-to-b from-[#0C4A6E] via-[#075985] to-[#0369A1]',
+  
+  // Platinum Elite - Platino exclusivo
+  platinumElite: 'bg-gradient-to-br from-[#E5E7EB] via-[#9CA3AF] to-[#4B5563]'
 };
 
 export const PremiumOverlays = {
-  darkProfessional: 'bg-gradient-to-t from-black/60 via-black/30 to-black/20',
-  lightProfessional: 'bg-gradient-to-b from-white/95 via-white/90 to-white/95',
-  brandOverlay: 'bg-gradient-to-br from-primary-900/50 via-transparent to-secondary-900/30',
-  textReadability: 'bg-black/40'
+  darkProfessional: 'bg-gradient-to-t from-black/70 via-black/40 to-black/20',
+  lightProfessional: 'bg-gradient-to-b from-white/95 via-white/85 to-white/90',
+  brandOverlay: 'bg-gradient-to-br from-primary-900/60 via-transparent to-secondary-900/40',
+  textReadability: 'bg-black/50',
+  goldAccent: 'bg-gradient-to-t from-amber-900/30 via-transparent to-amber-600/20'
 };
